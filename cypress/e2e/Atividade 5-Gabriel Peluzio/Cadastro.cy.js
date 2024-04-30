@@ -79,7 +79,15 @@ describe('Cadastro de Usuario', () => {
     });
   });
 
+  describe('Cadastro com nome com - de 4 caracteres', () => {
+    it('Cadastro - de 4', () => {
+      cy.get('#name').type('Ana');
+      cy.get('#email').type(randomEmail);
+      cy.contains('button', 'Salvar').click();
+      cy.contains('Informe pelo menos 4 letras para o nome').should('be.visible');
 
+    });
+  });
 
 
 
